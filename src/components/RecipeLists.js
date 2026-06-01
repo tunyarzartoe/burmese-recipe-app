@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import RecipeStore from '../store/recipe';
 
 const RecipeList = observer(() => {
-  const { recipes, fetchRecipes, searchQuery, setSearchQuery } = RecipeStore;
+  const { recipes, fetchRecipes } = RecipeStore;
 
+  console.log('Recipes in RecipeList:', recipes); // Debugging log to check the recipes data
   useEffect(() => {
     fetchRecipes(); // Fetch the recipes when the component mounts
   }, [fetchRecipes]);
@@ -18,16 +20,16 @@ const RecipeList = observer(() => {
               <div className="card shadow-sm" style={{ height: '320px', borderRadius: '0.75rem' }}>
                 <img
                   src={`images/${recipe.Name}.jpg`}
-                  alt={`Recipe Image for ${recipe.Name}`}
+                  alt={recipe.Name}
                   onError={(e) => { e.target.src = 'images/default.png'; }} 
                   className="recipe-image card-img-top"
                   style={{ maxHeight: '200px', objectFit: 'cover' }}
                 />
                 <div className="card-body d-flex flex-column p-3">
                   <h5 className="recipe-title mb-2 text-truncate">{recipe.Name}</h5>
-                  <a href={`/recipe-details/${recipe.Guid}`} className="btn mt-auto" style={{ backgroundColor: 'rgba(63, 195, 128, 1)' }}>
+                  <Link to={`/recipe-details/${recipe.Guid}`} className="btn mt-auto" style={{ backgroundColor: 'rgba(63, 195, 128, 1)' }}>
                     View Recipe
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

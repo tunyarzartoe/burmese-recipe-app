@@ -38,4 +38,5 @@ class RecipeStore {
   }
 }
 
-export default new RecipeStore();
+const recipeStore = new RecipeStore();
+export default recipeStore;
