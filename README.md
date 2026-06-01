@@ -1,6 +1,51 @@
-# Getting Started with Create React App
+# Burmese Recipe App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based application showcasing traditional Burmese recipes with detailed cooking instructions, ingredients, and an interactive user interface.
+
+## Project Overview
+
+This application displays a collection of Burmese recipes with the ability to:
+- Browse recipes in a responsive grid layout
+- View detailed recipe information including ingredients and cooking instructions
+- Search recipes by name
+- Navigate seamlessly between recipe list and detail views
+
+## Technology Stack
+
+- **Frontend Framework**: React 18
+- **State Management**: MobX (with MobX React Lite hooks)
+- **Routing**: React Router v6
+- **Styling**: Bootstrap 5
+- **Build Tool**: Create React App
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── Navbar.js          # Top navigation component
+│   └── Footer.js          # Footer component
+├── components/
+│   ├── RecipeLists.js     # Recipe grid display component
+│   └── RecipeDetails.js   # Individual recipe details view
+├── containers/
+│   └── RecipeListsContainer.js  # Container component with store binding
+├── store/
+│   └── recipe.js          # MobX store for recipe state management
+├── data/
+│   └── BurmeseRecipes.json # Recipe data source
+├── App.js                 # Main app component with routing
+├── index.js              # React DOM entry point
+└── index.css             # Global styles
+```
+
+## Features
+
+1. **Recipe Listing**: Displays recipes in a responsive grid (1-4 columns based on screen size)
+2. **Recipe Details**: Full recipe page with ingredients and cooking instructions
+3. **Image Handling**: Fallback to default image if recipe image fails to load
+4. **Responsive Design**: Mobile-friendly layout using Bootstrap grid system
+5. **State Management**: Centralized recipe state using MobX
 
 ## Available Scripts
 
@@ -68,3 +113,38 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Installation & Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view in your browser
+
+## Dependencies
+
+- `react` & `react-dom` - UI framework
+- `react-router-dom` - Client-side routing
+- `mobx` & `mobx-react-lite` - State management
+- `react-scripts` - Build tooling (Create React App)
+
+## Recent Updates
+
+- ✅ Fixed ESLint warnings (removed unused props, fixed alt attributes)
+- ✅ Added missing Babel plugin (`@babel/plugin-proposal-private-property-in-object`)
+- ✅ Implemented React Router for recipe detail pages
+- ✅ Created RecipeDetails component for full recipe views
+- ✅ Replaced anchor links with React Router Link components
+
+## Notes
+
+- All recipe data is stored in `src/data/BurmeseRecipes.json`
+- Images should be placed in `public/images/` directory named after recipe names
+- The app uses a default image fallback if recipe images are missing
+
