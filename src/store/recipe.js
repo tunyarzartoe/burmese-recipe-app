@@ -4,6 +4,7 @@ import recipesData from '../data/BurmeseRecipes.json';
 class RecipeStore {
   recipes = [];
   searchQuery = '';
+  loading = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -12,12 +13,14 @@ class RecipeStore {
 
   async fetchRecipes() {
     try {
+      this.loading = true;
       const fetchedRecipes = await new Promise((resolve) => {
-        setTimeout(() => resolve(recipesData), 500); 
+        setTimeout(() => resolve(recipesData), 500);
       });
 
       runInAction(() => {
         this.recipes = fetchedRecipes;
+        this.loading = false;
       });
     } catch (error) {
       console.error('Failed to fetch recipes:', error);
